@@ -22,7 +22,7 @@ if platform?('windows')
       not_if { ::File.exist?("#{node['nssm']['install_location']}\\nssm.exe".gsub(/%[^%]+%/) { |m| ENV[m[1..-2]] }) }
     end
   elsif node['nssm']['install_method'] == 'choco'
-    node.default['nssm']['install_location'] = "C:\\ProgramData\\Chocolatey\\bin"
+    node.override['nssm']['install_location'] = "C:\\ProgramData\\Chocolatey\\bin"
     include_recipe 'chocolatey'
 
     chocolatey_package 'nssm' do
