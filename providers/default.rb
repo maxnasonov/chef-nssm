@@ -41,7 +41,7 @@ action :install do
           #{nssm_exe} set "#{new_resource.servicename}" #{k} #{v}
         EOH
       end
-    end unless service_installed
+    end
 
     if new_resource.start
       service new_resource.servicename do
